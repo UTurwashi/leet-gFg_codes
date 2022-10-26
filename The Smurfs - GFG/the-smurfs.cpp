@@ -20,7 +20,7 @@ public:
             else
             g++;
         }
-        if((r==0 && b==0) || (r==0 && g==0) || (b==0 && g==0))
+        if(r==n || b==n || g==n)
         return n;
         else if((r%2==0 && b%2==0 && g%2==0) || (r%2==1 && b%2==1 && g%2==1))
         return 2;
