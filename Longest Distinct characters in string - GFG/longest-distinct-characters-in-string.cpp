@@ -21,20 +21,14 @@ int main()
 int longestSubstrDistinctChars (string S)
 {
     // your code here
-    unordered_map<char, int> mp;
-    int ans = 0, count=0;
-    for(int i=0;i<S.size();i++){
-        if(i==0 || mp[S[i]]==0){
-            mp[S[i]]=i;
+     vector<int> mp(256,-1);
+        int l=0,r=0,len=0;
+        int n=S.size();
+        while(r<n){
+            if(mp[S[r]]!=-1) l=max(mp[S[r]]+1,l);
+            mp[S[r]]=r;
+            len=max(len,r-l+1);
+            r++;
         }
-        else{
-            int p = mp.size();
-            ans=max(ans,p);
-            i=mp[S[i]];
-            mp.clear();
-        }
-    }
-    int p = mp.size();
-    ans=max(ans,p);
-    return ans;
+        return len;
 }
